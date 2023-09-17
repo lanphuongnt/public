@@ -3,7 +3,9 @@
 ## OLD BUT GOLD
 
 Đầu tiên mình chạy thử file main, nhập thử cái gì đó thì chương trình hiện ra 2 messages là `Wrong length!!.` và `nope!`
-![Chay thu file main](image.png)
+
+![image](https://github.com/lanphuongnt/public/assets/117977667/25f5cc8f-aa1e-4499-be6e-55eb49fa8ffd)
+
 
 Mình tìm thử thì thấy đoạn chương trình này:
 ```C
