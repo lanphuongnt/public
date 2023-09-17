@@ -67,6 +67,9 @@ void case_10(int a1, int a2, unsigned int a3){
 `case_10` tương ứng với lệnh `and`. Tương tự với các case khác.
 
 Mình viết chương trình này lại cho dễ hiểu hơn:
+
+~~Viết sơ sơ thôi tại mình không rành code assembly lắm OAO~~
+
 ```
 0		: byte[512] = 100
 4		: byte[513] = 105
@@ -317,10 +320,11 @@ int main(){
     return dword[8];
 }
 ```
+*(Đọc cmt trên code i)*
 
 `Flag: W1{happy_happy_easy_babyvm!!!!!}`
 
-*Note* 
+***Note:*** 
 Sau khi ngồi viết lại tiếp cái đoạn code trên thì mình thấy đây là thuật toán mã hóa RC4.
 
 Link tham khảo: https://www.geeksforgeeks.org/rc4-encryption-algorithm/
