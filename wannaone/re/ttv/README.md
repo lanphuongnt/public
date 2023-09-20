@@ -381,6 +381,7 @@ Reverse các hàm func0-func4, các hàm này khá dài, mà mình cũng không 
 Về ciphertext, thì mình bruteforce 4 bytes đầu tiên để tìm thứ tự gọi hàm đúng (4 bytes đầu có chữ `W1`). Sau đó mình lấy thứ tự vừa tìm được để decrypt phần còn lại.
 ~~Chi tiết thì mình bổ sung sau z :(~~
 
+`W1{no_z3_and_angr!!}`
 
 
 
