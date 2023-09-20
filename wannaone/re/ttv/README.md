@@ -378,7 +378,7 @@ int main(){
 ~~Tạm viết sơ sơ vì mình buồn ngủ quá :(~~
 
 Reverse các hàm func0-func4, các hàm này khá dài, mà mình cũng không biết có tools nào để mình chuyển từ assembly về python hay C nên mình đành code chay z... Vẫn chưa tới 300 dòng if là vẫn xài được :( I think so...
-
+Về ciphertext, thì mình bruteforce 4 bytes đầu tiên để tìm thứ tự gọi hàm đúng (4 bytes đầu có chữ `W1`). Sau đó mình lấy thứ tự vừa tìm được để decrypt phần còn lại.
 ~~Chi tiết thì mình bổ sung sau z :(~~
 
 
