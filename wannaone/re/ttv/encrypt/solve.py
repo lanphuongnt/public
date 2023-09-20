@@ -1,7 +1,9 @@
 import itertools
 from Crypto.Util.number import *
 
-cipher = [0xdd, 0x23, 0x47, 0x53]
+# cipher = [0xdd, 0x23, 0x47, 0x53]
+
+cipher = [0x57, 0xb8, 0x82, 0x20, 0x0f, 0x78, 0xb5, 0x14, 0x5e, 0x9d, 0xef, 0xd9, 0x66, 0x72, 0x75, 0x98, 0xe6, 0x68, 0x92, 0x65]
 
 out = open("result.txt", "w")
 def handle_instruction(ins):
@@ -100,27 +102,38 @@ def func(stt, value):
         rip += jmp
     return value
 
+
 def brute_force():
     permu = list(itertools.permutations([0, 1, 2, 3, 4]))
     for case in permu:
-        ct = cipher.copy()
+        ct = cipher.copy()[:4]
         while len(ct) % 4 != 0:
             ct.append(0)
-        # Khuc nay phai brute force 256 ki tu cho moi ki tu con thieu chu khong phai append 0 zo dau. Nhung ma minh luoi code qua huhu nen minh lay tieu chuan length cua input chia het cho 4 nhe :3
-        for stt in case:
-            for i in range(0, len(ct), 4):
-                val = ct[i + 3] * 0x1000000 + ct[i + 2] * 0x10000 + ct[i + 1] * 0x100 + ct[i]
-                tmp = long_to_bytes(reverse_func(stt, val))
-                while (len(tmp) % 4 != 0):
-                    tmp = b'\x00' + tmp
-                ct[i] = tmp[3]
-                ct[i + 1] = tmp[2]
-                ct[i + 2] = tmp[1]
-                ct[i + 3] = tmp[0]
-        flag = b""
-        for c in ct:
-            flag += long_to_bytes(c)
-        print(flag, file=out)
+        flag = reverse(case, ct)
+        if b"W1" in flag:
+            return case
+    return [0] * 5
 
-brute_force()
+def reverse(permu, ct):
+    # print("Case:", permu,":")
+    for stt in permu:
+        for i in range(0, len(ct), 4):
+            val = ct[i + 3] * 0x1000000 + ct[i + 2] * 0x10000 + ct[i + 1] * 0x100 + ct[i]
+            tmp = long_to_bytes(reverse_func(stt, val))
+            while (len(tmp) % 4 != 0):
+                tmp = b'\x00' + tmp
+            ct[i] = tmp[3]
+            ct[i + 1] = tmp[2]
+            ct[i + 2] = tmp[1]
+            ct[i + 3] = tmp[0]
+    flag = b""
+    for c in ct:
+        flag += long_to_bytes(c)
+    if b"W1" in flag:
+        return flag
+    else:
+        return b"NO_FLAG"
 
+permu = brute_force()
+print(reverse(permu, cipher))
+#W1{no_z3_and_angr!!}
